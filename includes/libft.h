@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <limits.h> //check https://projects.intra.42.fr/get_next_line/agusev 
+# include <float.h>
 
 # define BUFF_SIZE 32 
 # define MAX_FD 10000	// if he test success -> git push git/get_next_line_42 and update here too!

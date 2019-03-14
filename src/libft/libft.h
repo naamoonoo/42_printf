@@ -96,7 +96,7 @@ char				*ft_strtrim_by(char const *s, char condition);
 **---------------------number descriptor---------------------
 */
 
-void				ft_putnbr(int n);
+void				ft_putnbr(long long int n);
 int					ft_atoi(const char *str);
 int					ft_atoi_base(const char *str, int str_base);
 int					ft_number_length(int n, int base);

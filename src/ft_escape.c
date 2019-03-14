@@ -24,5 +24,7 @@ void	ft_escape(char *s)
 			ft_putchar('\"');
 		else if (*s == '\'')
 			ft_putchar('\'');
+		else if (*s == '%')
+			ft_putchar('%');
 	}
 }

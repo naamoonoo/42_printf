@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr(long long int n)
 {
-	if (n == MAX_INT)
-		ft_putstr("-2147483648");
+	if (n == LONG_MIN)
+		ft_putstr("-9223372036854775808");
 	else
 	{
 		if (n < 0)
