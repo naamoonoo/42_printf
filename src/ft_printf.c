@@ -7,7 +7,7 @@ int ft_printf(char *s, ...)
 	va_start(ap, s);
 	while (*s)
 	{
-	if (*s == '\\')
+		if (*s == '\\')
 			ft_escape(++s);
 		else if (*s == '%')
 			ft_formatting(&s, &ap);
@@ -17,3 +17,4 @@ int ft_printf(char *s, ...)
 	va_end(ap);
 	return (0);
 }
+

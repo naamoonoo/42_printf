@@ -1,6 +1,17 @@
-{
-    "files.associations": {
-        "ft_printf.h": "c",
-        "libft.h": "c"
-    }
-}
+
+
+
+{"hu", h_FLAG | u_FLAG, hu_print},
+{"hhu", hh_FLAG | u_FLAG, hhu_print},
+{"lu", l_FLAG | u_FLAG, lu_print},
+{"llu", ll_FLAG | u_FLAG, llu_print},
+
+{"hu", h_FLAG | u_FLAG, hu_print},
+{"hhu", hh_FLAG | u_FLAG, hhu_print},
+{"lu", l_FLAG | u_FLAG, lu_print},
+{"llu", ll_FLAG | u_FLAG, llu_print},
+
+{"hu", h_FLAG | u_FLAG, hu_print},
+{"hhu", hh_FLAG | u_FLAG, hhu_print},
+{"lu", l_FLAG | u_FLAG, lu_print},
+{"llu", ll_FLAG | u_FLAG, llu_print},

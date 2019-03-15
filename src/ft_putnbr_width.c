@@ -1,5 +1,4 @@
-
-// #include "libft.h"
+#include "libft.h"
 
 // void	ft_putfloat(long double n)
 // {

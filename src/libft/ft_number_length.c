@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_number_length(int n, int base)
+int	ft_number_length(long n, int base)
 {
 	if (n < base)
 		return (1);

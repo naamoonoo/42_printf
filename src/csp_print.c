@@ -1,13 +1,13 @@
 # include "ft_printf.h"
 
-void	ft_c_print(va_list *ap, f_s fs_l)
+void	c_print(va_list *ap, f_s fs)
 {
 	char	c;
 	int		len;
 
 	c = va_arg(*ap, int);
-	len = fs_l.width - 1;
-	if (fs_l.minus)
+	len = fs.width - 1;
+	if (fs.minus)
 	{
 		ft_putchar(c);
 		ft_make_width(len, ' ');
@@ -19,14 +19,16 @@ void	ft_c_print(va_list *ap, f_s fs_l)
 	}
 }
 
-void	ft_s_print(va_list *ap, f_s fs_l)
+void	s_print(va_list *ap, f_s fs)
 {
 	char	*s;
 	int		len;
 
 	s = va_arg(*ap, char *);
-	len = fs_l.width - ft_strlen(s);
-	if (fs_l.minus)
+	if (fs.precision)
+		s = ft_strsub(s, 0, fs.precision);
+	len = fs.width - ft_strlen(s);
+	if (fs.minus)
 	{
 		ft_putstr(s);
 		ft_make_width(len, ' ');
@@ -36,12 +38,14 @@ void	ft_s_print(va_list *ap, f_s fs_l)
 		ft_make_width(len, ' ');
 		ft_putstr(s);
 	}
+	if (fs.precision)
+		ft_strdel(&s);
 }
 
-void	ft_p_print(va_list *ap, f_s fs_l)
+void	p_print(va_list *ap, f_s fs)
 {
 	int p;
-	fs_l.minus -= fs_l.plus;
+	fs.minus -= fs.plus;
 	p = va_arg(*ap, int);
 	printf("%p",&p);
 }

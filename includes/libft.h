@@ -97,10 +97,10 @@ char				*ft_strtrim_by(char const *s, char condition);
 **---------------------number descriptor---------------------
 */
 
-void				ft_putnbr(int n);
+void				ft_putnbr(long n);
 int					ft_atoi(const char *str);
 int					ft_atoi_base(const char *str, int str_base);
-int					ft_number_length(int n, int base);
+int					ft_number_length(long n, int base);
 int					ft_pow(int base, int times);
 int					ft_pgcd(int a, int b);
 void				ft_itoa_minus_handling(int *n, char *res, int *len, int *i);
