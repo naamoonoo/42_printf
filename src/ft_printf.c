@@ -7,10 +7,10 @@ int ft_printf(char *s, ...)
 	va_start(ap, s);
 	while (*s)
 	{
-		if (*s == '\\')
-			ft_escape(++s);
-		else if (*s == '%')
+		if (*s == '%')
 			ft_formatting(&s, &ap);
+		// else if ('{')
+			// ft_coloring
 		else
 			ft_putchar(*s++);
 	}

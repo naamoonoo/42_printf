@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int64_t n)
 {
 	char	*res;
 	int		len;
@@ -20,12 +20,12 @@ char	*ft_itoa(int n)
 	int		dv;
 
 	i = 0;
-	len = ft_number_length(ABS(n), 10);
-	dv = ft_pow(10, len);
+	len = ft_numlen(ABS(n), 10);
+	dv = ft_pow(10, len - 1);
 	if (!(res = (char *)malloc((n < 0 ? len + 2 : len + 1) * sizeof(char))))
 		return (NULL);
-	if (n == MAX_INT)
-		return (ft_strcpy(res, "-2147483648"));
+	if (n == INT64_MIN)
+		return (ft_strcpy(res, "-9223372036854775808"));
 	if (n < 0)
 		ft_itoa_minus_handling(&n, res, &len, &i);
 	while (i < len)

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pow.c                                           :+:      :+:    :+:   */
+/*   ft_numlen.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hnam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/21 08:02:45 by hnam              #+#    #+#             */
-/*   Updated: 2019/02/21 08:02:46 by hnam             ###   ########.fr       */
+/*   Created: 2019/02/21 17:06:56 by hnam              #+#    #+#             */
+/*   Updated: 2019/02/21 17:06:57 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int64_t	ft_pow(int base, int times)
+int	ft_numlen(int64_t n, int base)
 {
-	if (times == 0)
+	if (n < 0)
+		n *= -1;
+	if (n < (int64_t)base)
 		return (1);
-	else if (times == 1)
-		return (base);
 	else
-		return (ft_pow(base, times - 1) * base);
+		return (ft_numlen(n % base, base) + ft_numlen(n / base, base));
 }

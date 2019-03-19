@@ -25,8 +25,8 @@ void	s_print(va_list *ap, f_s fs)
 	int		len;
 
 	s = va_arg(*ap, char *);
-	if (fs.precision)
-		s = ft_strsub(s, 0, fs.precision);
+	if (fs.prec)
+		s = ft_strsub(s, 0, fs.prec);
 	len = fs.width - ft_strlen(s);
 	if (fs.minus)
 	{
@@ -38,14 +38,24 @@ void	s_print(va_list *ap, f_s fs)
 		ft_make_width(len, ' ');
 		ft_putstr(s);
 	}
-	if (fs.precision)
+	if (fs.prec)
 		ft_strdel(&s);
 }
 
 void	p_print(va_list *ap, f_s fs)
 {
-	int p;
-	fs.minus -= fs.plus;
-	p = va_arg(*ap, int);
-	printf("%p",&p);
+	intptr_t	ptr;
+	char		*temp;
+	
+	temp = NULL;
+	ptr = va_arg(*ap, intptr_t);
+	if (!ptr)
+		ft_putstr("0x0");
+	ft_putstr("0x");
+    temp = ft_itoa_base(ptr, HEXA, 12);
+	if (fs.minus)
+    	ft_putstr(temp);
+	else
+		ft_putstr(temp);
+	ft_strdel(&temp);
 }

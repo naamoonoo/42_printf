@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void	ft_putnbr(long n)
+void	ft_putnbr(int64_t n)
 {
-	if (n == LONG_MIN)
+	if (n == INT64_MIN)
 		ft_putstr("−9223372036854775808");
 	else
 	{

@@ -3,21 +3,21 @@
 // // #include "ft_printf.h"
 
 // typedef enum {
-// 	c_FLAG = 1 << 0,
-// 	s_FLAG = 1 << 1,
-// 	p_FLAG = 1 << 2,
-// 	d_FLAG = 1 << 3,
-// 	i_FLAG = 1 << 4,
-// 	o_FLAG = 1 << 5,
-// 	u_FLAG = 1 << 6,
-// 	x_FLAG = 1 << 7,
-// 	X_FLAG = 1 << 8,
-// 	f_FLAG = 1 << 9,
-// 	h_FLAG = 1 << 10,
-// 	hh_FLAG = 1 << 11,
-// 	l_FLAG = 1 << 12,
-// 	ll_FLAG = 1 << 13,
-// 	L_FLAG = 1 << 14,
+// 	c_TYPE = 1 << 0,
+// 	s_TYPE = 1 << 1,
+// 	p_TYPE = 1 << 2,
+// 	d_TYPE = 1 << 3,
+// 	i_TYPE = 1 << 4,
+// 	o_TYPE = 1 << 5,
+// 	u_TYPE = 1 << 6,
+// 	x_TYPE = 1 << 7,
+// 	X_TYPE = 1 << 8,
+// 	f_TYPE = 1 << 9,
+// 	h_LENGTH = 1 << 10,
+// 	hh_LENGTH = 1 << 11,
+// 	l_LENGTH = 1 << 12,
+// 	ll_LENGTH = 1 << 13,
+// 	L_LENGTH = 1 << 14,
 // }				flag_specifier;
 
 int main(){
@@ -59,8 +59,8 @@ int main(){
 // // 	printf("%*.*f\n", 20, 2, 123.5253262);
 
 // 	// printf("%lld", LONG_MAX + 1);
-// 	printf("%d\n", (h_FLAG | h_FLAG));
-// 	printf("%d\n", hh_FLAG);
+// 	printf("%d\n", (h_LENGTH | h_LENGTH));
+// 	printf("%d\n", hh_LENGTH);
 
     // short int a = 2651242;
     // printf("%d\n", a);
@@ -69,4 +69,6 @@ int main(){
     // printf("%hhd\n", 123);
     // printf("%ld\n", INT_MAX + 5);
     // printf("%lld\n", LONG_MAX + 123);
+    // printf("|%-9.4d|\n", -124);
+    printf("%023o\n", 12312);
 }

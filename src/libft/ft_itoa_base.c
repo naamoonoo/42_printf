@@ -18,21 +18,21 @@ static char	*make_base_set(char *base, int str_base)
 	return (base);
 }
 
-char	*ft_itoa_base(int n, int str_base, int len)
+char	*ft_itoa_base(int64_t n, int str_base, int len)
 {
-	char	*res;
-	char	*base_set;
-	int		i;
-	int		dv;
+	char				*res;
+	char				*base_set;
+	int					i;
+	long long int		dv;
 
 	i = 0;
-	len = len == 0 ? ft_number_length(ABS(n), str_base) : len;
+	len = len == 0 ? ft_numlen(ABS(n), str_base) : len;
 	dv = ft_pow(str_base, len - 1);
 	base_set = NULL;
 	if (!(res = (char *)malloc((n < 0 ? len + 2 : len + 1) * sizeof(char))))
 		return (NULL);
-	if (n == MAX_INT)
-		return (ft_strcpy(res, "-2147483648"));
+	if (n == INT64_MIN)
+		return (ft_strcpy(res, "-9223372036854775808"));
 	if (n < 0)
 		ft_itoa_minus_handling(&n, res, &len, &i);
 	base_set = make_base_set(base_set, str_base);

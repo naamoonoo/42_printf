@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	ft_itoa_minus_handling(int *n, char *res, int *len, int *i)
+void	ft_itoa_minus_handling(int64_t *n, char *res, int *len, int *i)
 {
 	*n = ABS(*n);
 	res[*i] = '-';

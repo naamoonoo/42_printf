@@ -1,23 +1,23 @@
 #include "ft_printf.h"
 
-uint64_t	get_unsigned_number(va_list *ap, f_s fs)
+int64_t	get_number(va_list *ap, f_s fs)
 {
 	if (fs.length == l_LENGTH)
-		return ((unsigned long)va_arg(*ap, unsigned long));
+		return ((long)va_arg(*ap, long));
 	else if (fs.length == ll_LENGTH)
-		return ((unsigned long long)va_arg(*ap, unsigned long long));
+		return ((long long)va_arg(*ap, long long));
 	else if (fs.length == h_LENGTH)
-		return ((unsigned short)va_arg(*ap, int));
+		return ((short)va_arg(*ap, int));
 	else if (fs.length == hh_LENGTH)
-		return ((unsigned char)va_arg(*ap, int));
+		return ((signed char)va_arg(*ap, int));
 	else
-		return ((unsigned int)va_arg(*ap, int));
+		return ((int)va_arg(*ap, int));
 }
 
-void		u_print(va_list *ap, f_s fs)
+void	di_print(va_list *ap, f_s fs)
 {
-	uint64_t	nbr;
-	int			len;
+	int64_t nbr;
+	int		len;
 
 	nbr = get_number(ap, fs);
 	len = fs.width - is_signed(nbr < 0, fs);
