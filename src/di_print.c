@@ -20,7 +20,7 @@ void	di_print(va_list *ap, f_s fs)
 	int		len;
 
 	nbr = get_number(ap, fs);
-	len = fs.width - is_signed(nbr < 0, fs);
+	len = fs.width - is_sign(nbr < 0, fs);
 	len -= fs.prec > ft_numlen(nbr, 10) ? fs.prec : ft_numlen(nbr, 10);
 	if (fs.minus)
 	{
@@ -28,7 +28,7 @@ void	di_print(va_list *ap, f_s fs)
 		ft_make_width(len, ' ');
 	}
 	else if (!fs.minus && fs.zero)
-		ft_putnbr_width(nbr, fs.width - is_signed(nbr < 0, fs), fs);
+		ft_putnbr_width(nbr, fs.width - is_sign(nbr < 0, fs), fs);
 	else if (!fs.minus && !fs.zero)
 	{
 		ft_make_width(len, ' ');

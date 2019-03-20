@@ -1,19 +1,24 @@
 #include "ft_printf.h"
 
-ft_ht dispatch_table[] =
+ft_dt	dispatch_table[] =
 {
-	{"c", c_TYPE, c_print},
-	{"s", s_TYPE, s_print},
-	{"p", p_TYPE, p_print},
-	{"d", d_TYPE, di_print},
-	{"i", i_TYPE, di_print},
-	{"o", o_TYPE, o_print},
-	{"u", u_TYPE, u_print},
-	{"x", x_TYPE, x_print},
-	{"X", X_TYPE, X_print},
-	{"f", f_TYPE, f_print},
+	{'c', c_TYPE, c_print},
+	{'s', s_TYPE, s_print},
+	{'p', p_TYPE, p_print},
+	{'d', d_TYPE, di_print},
+	{'i', i_TYPE, di_print},
+	{'o', o_TYPE, o_print},
+	{'u', u_TYPE, u_print},
+	{'x', x_TYPE, x_print},
+	{'X', X_TYPE, X_print},
+	{'f', f_TYPE, f_print},
+	{'b', b_TYPE, b_print},
+	{'e', e_TYPE, eE_print},
+	{'E', E_TYPE, eE_print},
+	{'g', g_TYPE, g_print},
+	{'G', G_TYPE, g_print},
 	// {'f', f_TYPE, f_print},
-	{NULL, 0, NULL}
+	{0, 0, NULL}
 };
 
 void	ft_formatting(char **s, va_list *ap)
@@ -25,15 +30,18 @@ void	ft_formatting(char **s, va_list *ap)
 	format = 0;
 	i = -1;
 	flag_setting(&fs);
+
 	format = get_format(s, &format, &fs);
 	// printf("%c\n", format);
-	// printf("%d\n", ft_strchr_idx(SPECIFIER, format));
+	// printf("%d\n', ft_strchr_idx(SPECIFIER, format));
 	// if (format)
 	// 	dispatch_table[ft_strchr_idx(SPECIFIER, format)].function(ap, fs);
 	while (format && ++i < (int)KIND_OF_SPECIFIER)
 	{
 		if (format == dispatch_table[i].format)
 		{
+			// if (ft_strchr("feE", dispatch_table[i].specifier) != NULL)
+			// 	fs.for_g = dispatch_table[i].format;
 			dispatch_table[i].function(ap, fs);
 			break ;
 		}
@@ -96,7 +104,7 @@ int		get_length(char **s, f_s *fs)
 		else
 			return (fs->length | l_LENGTH);
 	}
-	else if(**s == 'L')
+	else if (**s == 'L')
 		return (fs->length | L_LENGTH);
 	return (0);
 }
@@ -109,20 +117,24 @@ int		get_format(char **s, int *flag, f_s *fs)
 	i = -1;
 	if (**s == '%')
 		ft_putchar('%');
-	else if (ft_strchr("-+ 0#.123456789$", **s) != NULL)
+	else if (ft_strchr(FLAG_SPECIFIER, **s) != NULL)
 	{
 		get_flag(**s, fs);
 		return get_format(s, flag, fs);
 	}
-	else if (ft_strchr("hlL",**s) != NULL)
+	else if (ft_strchr("hlL", **s) != NULL)
 	{
 		fs->length = get_length(s, fs);
 		return get_format(s, flag, fs);
 	}
 	else if (ft_strchr(SPECIFIER, **s) != NULL)
-		while (++i < 10)
-			if (dispatch_table[i].specifier[0] == **s)
+		while (++i < (int)KIND_OF_SPECIFIER)
+			if (dispatch_table[i].specifier == **s)
+			{
+				fs->is_upper = ft_strchr("EG", **s) != NULL ? 1 : 0;
+				fs->is_g = ft_strchr("gG", **s) != NULL ? 1 : 0;
 				return (dispatch_table[i].format | *flag);
+			}
 	return (0);
 }
 

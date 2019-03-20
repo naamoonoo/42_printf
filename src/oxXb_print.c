@@ -1,5 +1,7 @@
 #include "ft_printf.h"
 
+
+
 void	o_print(va_list *ap, f_s fs)
 {
 	u_int64_t	d;
@@ -71,8 +73,7 @@ void	X_print(va_list *ap, f_s fs)
 	{
 		ft_putstr(fs.hash ? "0X" : 0);
 		temp = ft_itoa_base(d, HEXA, fs.width - fs.hash * 2);
-		while(temp[i])
-			ft_putchar(ft_toupper(temp[i++]));
+		ft_putstr_upper(temp);
 	}
 	else
 	{
@@ -80,8 +81,7 @@ void	X_print(va_list *ap, f_s fs)
 		len = fs.width - fs.hash * 2 - ft_strlen(temp);
 		!fs.minus ? ft_make_width(len, ' ') : 0;
 		ft_putstr(fs.hash ? "0X" : 0);
-		while(temp[i])
-			ft_putchar(ft_toupper(temp[i++]));
+		ft_putstr_upper(temp);
 		fs.minus ? ft_make_width(len, ' ') : 0;
 	}
 	ft_strdel(&temp);
@@ -99,7 +99,7 @@ void	b_print(va_list *ap, f_s fs)
 		return ;
 	if (fs.zero)
 	{
-		ft_putstr(fs.hash ? "ob" : 0);
+		ft_putstr(fs.hash ? "0b" : 0);
 		temp = ft_itoa_base(d, BINARY, fs.width - fs.hash * 2);
 		ft_putstr(temp);
 	}
@@ -108,7 +108,7 @@ void	b_print(va_list *ap, f_s fs)
 		temp = ft_itoa_base(d, BINARY, 0);
 		len = fs.width - fs.hash * 2 - ft_strlen(temp);
 		!fs.minus ? ft_make_width(len, ' ') : 0;
-		ft_putstr(fs.hash ? "ob" : 0);
+		ft_putstr(fs.hash ? "0b" : 0);
 		ft_putstr(temp);
 		fs.minus ? ft_make_width(len, ' ') : 0;
 	}

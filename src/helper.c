@@ -1,18 +1,30 @@
-# include "ft_printf.h"
+#include "ft_printf.h"
 
+void	ft_make_width(int len, char c)
+{
+	while (len > 0 && len-- != 0)
+		ft_putchar(c);
+}
 
+void	ft_putstr_upper(char *s)
+{
+	int i;
 
-// int		is_special(char c)
-// {
-// 	return (ft_strchr("-+ 0#.hlL123456789$", c) );
-// }
+	i = -1;
+	if (s)
+		while (s[++i])
+			ft_putchar(ft_toupper(s[i]));
+}
 
-// int		is_prefix(char c)
-// {
-// 	return (c == 'h' || c == 'l' || c == 'L');
-// }
+int		get_enum(long double f)
+{
+	int e_num;
 
-// int		is_specifier(char c)
-// {
-// 	return (ft_strchr("cspdiouxXf%", c));
-// }
+	e_num = 0;
+	while(ABS(f) > 0.0 && ABS(f) < 1.0)
+	{
+		f *= 10.0;
+		e_num -= 1;
+	}
+	return (e_num);
+}

@@ -260,8 +260,8 @@ int	main()
 	printf("|%f|\n", -52525.000232);
 	ft_printf("|%f|\n", -52525.000232);
 	ft_printf("\n");
-	printf("|%5.f|\n", -2555.125905);
-	ft_printf("|%5.f|\n", -2555.125905);
+	printf("|%#5.f|\n", -2555.125905);
+	ft_printf("|%#5.f|\n", -2555.125905);
 	ft_printf("\n");
 	printf("|%-20.4f|\n", -21.8482905);
 	ft_printf("|%-20.4f|\n", -21.8482905);
@@ -292,9 +292,16 @@ int	main()
 	ft_printf("|%- 5.3f|\n", -21.8482905);
 	// ft_printf("%- 5.3f\n", -21.8482905);
 	ft_printf("\n");
+	printf("|%#-4.4f|\n", 123124.125125125);
+	ft_printf("|%#-4.4f|\n\n", 123124.125125125);
+	printf("|%#-3.3f|\n", 0.0);
+	ft_printf("|%#-3.3f|\n\n", 0.0);
+	printf("|%#30f|\n", 0.0);
+	ft_printf("|%#30f|\n\n", 0.0);
 
 
 
+	
 	// printf("%s\n", ft_itoa_base(flag, 2, 16));
 	// long a = 300, b = (long) 1.0E+14;
 	// ft_printf( "%li\n%i", a, b );
@@ -321,5 +328,78 @@ int	main()
 	// printf("%-15o\n", -392);
 	// printf("%015o\n", -392);
 	// printf("hellon%s\n", ft_itoa_base(-392, 8, 10));
+	printf("|%f|\n", 0.7);
+	ft_printf("|%f|\n\n", 0.7);
+	printf("|%.0f|\n", 0.7);
+	ft_printf("|%.0f|\n\n", 0.7);
+	printf("|%e|\n", -0.001342);
+	ft_printf("|%e|\n\n", -0.001342);
+	printf("|%e|\n", -98.1342);
+	ft_printf("|%e|\n", -98.1342);
+	printf("|%.3e|\n", 1226.82425);
+	ft_printf("|%.3e|\n", 1226.82425);
+	printf("|%.0e|\n", 3.86362376);
+	ft_printf("|%.0e|\n\n", 3.86362376);
+	printf("|%e|\n", 3.26362376);
+	ft_printf("|%e|\n\n", 3.26362376);
+	printf("|%e|\n", 0.326362376);
+	ft_printf("|%e|\n\n", 0.326362376);
+	printf("|%# -30e|\n", 3.26362376);
+	ft_printf("|%# -30e|\n\n", 3.26362376);
+	// printf("|%#30.e|\n\n", 12351923581239589012385012385012.46362376);
+	// ft_printf("|%#30.e|\n\n", 12351923581239589012385012385012.46362376);
+	printf("|%12.10e|\n", -0.0000532);
+	ft_printf("|%12.10e|\n\n", -0.0000532);
+	printf("|%13e|\n", -0.1);
+	ft_printf("|%13e|\n\n", -0.1);
+	printf("|%14e|\n", -0.1);
+	ft_printf("|%14e|\n\n", -0.1);
+	printf("|%12.10E|\n", -0.1);
+	ft_printf("|%12.10E|\n\n", -0.1);
+	printf("|%13E|\n", -0.1);
+	ft_printf("|%13E|\n\n", -0.1);
+	printf("|%14E|\n", -0.1);
+	ft_printf("|%14E|\n\n", -0.1);
+	printf("|%15E|\n", -0.1);
+	ft_printf("|%15E|\n\n", -0.1);
+	printf("|%16E|\n", 0.1);
+	ft_printf("|%16E|\n\n", 0.1);
+
+	ft_printf("binary %#b\n", 128);
+
+	
+	printf("|%#.16f|\n", 3122.55);
+	ft_printf("|%#.16f|\n", 3122.55);
+	printf("|%#.16E|\n", 3122.55);
+	ft_printf("|%#.16E|\n", 3122.55);
+	printf("|%3.16G|\n", 3122.55);
+	ft_printf("|%#.16G|\n", 3122.55);
+
+	printf("|%#3.3f|\n", -12.17347);
+	ft_printf("|%#3.3f|\n", -12.17347);
+	printf("|%#3.3E|\n", -12.17347);
+	ft_printf("|%#3.3E|\n", -12.17347);
+	printf("|%3.3G|\n", -12.17347);
+	ft_printf("|%3.3G|\n", -12.17347);
+	
+	ft_printf("-------------------\n");
+	printf("|%G|\n", 173.47);
+	ft_printf("|%G|\n", 173.47);
+	printf("|%G|\n", 17.347);
+	ft_printf("|%G|\n", 17.347);
+	printf("|%G|\n", 1.7347);
+	ft_printf("|%G|\n", 1.7347);
+	printf("|%G|\n", 0.17347);
+	ft_printf("|%G|\n", 0.17347);
+	printf("|%G|\n", 0.017347);
+	ft_printf("|%G|\n", 0.017347);
+	printf("|%G|\n", 0.0017347);
+	ft_printf("|%G|\n", 0.0017347);
+	printf("|%G|\n", 0.00017347);
+	ft_printf("|%G|\n", 0.00017347);
+	printf("|%G|\n", 0.000017347);
+	ft_printf("|%G|\n", 0.000017347);
+	ft_printf("-------------------\n");
+
 	return (0);
 }
