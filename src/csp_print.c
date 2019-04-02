@@ -1,12 +1,26 @@
-# include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   csp_print.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/02 00:24:41 by hnam              #+#    #+#             */
+/*   Updated: 2019/04/02 00:45:26 by hnam             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	c_print(va_list *ap, f_s fs)
+#include "ft_printf.h"
+
+int	c_print(va_list *ap, t_s fs)
 {
 	char	c;
 	int		len;
+	char	*res;
 
-	c = va_arg(*ap, int);
+	c = (char)va_arg(*ap, int);
 	len = fs.width - 1;
+	res = ft_memalloc(len + 1);
 	if (fs.minus)
 	{
 		ft_putchar(c);
@@ -17,45 +31,81 @@ void	c_print(va_list *ap, f_s fs)
 		ft_make_width(len, ' ');
 		ft_putchar(c);
 	}
+	return (len > 0 ? len + 1 : 1);
 }
 
-void	s_print(va_list *ap, f_s fs)
+int	s_print(va_list *ap, t_s fs)
 {
 	char	*s;
 	int		len;
 
 	s = va_arg(*ap, char *);
-	if (fs.prec)
+	if (s == NULL)
+		s = "(null)";
+	if (fs.dot && !fs.prec)
+		return (0);
+	if (fs.dot && fs.prec && (int)ft_strlen(s) > fs.prec)
 		s = ft_strsub(s, 0, fs.prec);
 	len = fs.width - ft_strlen(s);
-	if (fs.minus)
-	{
-		ft_putstr(s);
-		ft_make_width(len, ' ');
-	}
-	else
-	{
-		ft_make_width(len, ' ');
-		ft_putstr(s);
-	}
-	if (fs.prec)
-		ft_strdel(&s);
+	!fs.minus ? ft_make_width(len, ' ') : 0;
+	ft_putstr(s);
+	fs.minus ? ft_make_width(len, ' ') : 0;
+	(fs.dot && fs.prec && ((int)ft_strlen(s) > fs.prec)) ? ft_strdel(&s) : 0;
+	len = get_big(fs.width, (int)ft_strlen(s));
+	// ft_strdel(&s); 해결 어떻게 할꺼야??
+	return (len);
 }
 
-void	p_print(va_list *ap, f_s fs)
+int	p_print(va_list *ap, t_s fs)
 {
 	intptr_t	ptr;
 	char		*temp;
-	
-	temp = NULL;
+	int			len;
+
 	ptr = va_arg(*ap, intptr_t);
 	if (!ptr)
-		ft_putstr("0x0");
-	ft_putstr("0x");
-    temp = ft_itoa_base(ptr, HEXA, 12);
-	if (fs.minus)
-    	ft_putstr(temp);
+		temp = "0";
 	else
-		ft_putstr(temp);
-	ft_strdel(&temp);
+		temp = ft_itoa_base(ptr, HEXA, 9);
+	len = fs.width - ft_strlen(temp) - 2;
+	!fs.minus ? ft_make_width(len, ' ') : 0;
+	ft_putstr("0x");
+	ft_putstr(temp);
+	fs.minus ? ft_make_width(len, ' ') : 0;
+	if ((len = get_big(fs.width, ft_strlen(temp))) != fs.width)
+		len += 2;
+	ptr ? ft_strdel(&temp) : 0;
+	return (len);
+}
+
+int	pct_print(t_s fs)
+{
+	int		len;
+	char	*res;
+
+	len = fs.width - 1;
+	res = ft_memalloc(len + 1);
+	if (fs.minus)
+	{
+		ft_putchar('%');
+		ft_make_width(len, ' ');
+	}
+	else
+	{
+		ft_make_width(len, fs.zero ? '0' : ' ');
+		ft_putchar('%');
+	}
+	return (len > 0 ? len + 1 : 1);
+}
+
+int	time_print(t_s fs)
+{
+	time_t now;
+
+	now = time(NULL);
+	if (now == 1)
+		return (ERROR);
+	printf("time is %ld\n", now);
+	fs.width += 1;
+	return 0;
 }

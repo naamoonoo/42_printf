@@ -1,37 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   u_print.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/02 00:26:55 by hnam              #+#    #+#             */
+/*   Updated: 2019/04/02 00:26:55 by hnam             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-uint64_t	get_unsigned_number(va_list *ap, f_s fs)
+uint64_t	get_unsigned_number(va_list *ap, t_s fs)
 {
 	if (fs.length == l_LENGTH)
 		return ((unsigned long)va_arg(*ap, unsigned long));
 	else if (fs.length == ll_LENGTH)
 		return ((unsigned long long)va_arg(*ap, unsigned long long));
 	else if (fs.length == h_LENGTH)
-		return ((unsigned short)va_arg(*ap, int));
+		return ((unsigned short)va_arg(*ap, unsigned int));
 	else if (fs.length == hh_LENGTH)
-		return ((unsigned char)va_arg(*ap, int));
+		return ((unsigned char)va_arg(*ap, unsigned int));
 	else
-		return ((unsigned int)va_arg(*ap, int));
+		return ((unsigned int)va_arg(*ap, unsigned int));
 }
 
-void		u_print(va_list *ap, f_s fs)
+static int	ret_val(uint64_t n, t_s fs)
 {
-	uint64_t	nbr;
+	if (fs.prec > fs.width && fs.prec > ft_numlen(ABS(n), 10))
+		return (fs.prec + (fs.plus || fs.space));
+	else if (fs.width > fs.prec && fs.width > ft_numlen(ABS(n), 10))
+		return (fs.width);
+	else
+	{
+		if (!n && fs.dot && !fs.prec)
+			return ((fs.plus || fs.space));
+		return (ft_numlen(ABS(n), 10) + (fs.plus || fs.space));
+	}
+}
+
+int			u_print(va_list *ap, t_s fs)
+{
+	uint64_t	n;
 	int			len;
 
-	nbr = get_number(ap, fs);
-	len = fs.width - is_sign(nbr < 0, fs);
-	len -= fs.prec > ft_numlen(nbr, 10) ? fs.prec : ft_numlen(nbr, 10);
-	if (fs.minus)
+	n = get_unsigned_number(ap, fs);
+	len = fs.width - (fs.plus || fs.space) - ((fs.dot && !fs.prec) ? -1 : 0) -
+	((fs.prec > ft_numlen(ABS(n), 10)) ? fs.prec : ft_numlen(ABS(n), 10));
+	if (fs.zero)
 	{
-		ft_putnbr_width(nbr, fs.prec, fs);
-		ft_make_width(len, ' ');
+		if (!fs.prec)
+			ft_putnbr_width(n, fs.width - (fs.plus || fs.space), fs);
+		else
+		{
+			ft_make_width(len, ' ');
+			ft_putnbr_width(n, fs.prec, fs);
+		}
 	}
-	else if (!fs.minus && fs.zero)
-		ft_putnbr_width(nbr, fs.width - is_sign(nbr < 0, fs), fs);
-	else if (!fs.minus && !fs.zero)
+	else
 	{
+		fs.minus ? ft_putnbr_width(n, fs.prec, fs) : 0;
 		ft_make_width(len, ' ');
-		ft_putnbr_width(nbr, fs.prec, fs);
+		!fs.minus ? ft_putnbr_width(n, fs.prec, fs) : 0;
 	}
+	return (ret_val(n, fs));
+}
+
+void		ft_putnbr_width_u(int64_t n, int minimum_len, t_s fs)
+{
+	int amount;
+
+	sign_handler(n < 0, fs);
+	amount = minimum_len - ft_numlen(ABS(n), 10);
+	if (minimum_len != 0)
+		ft_make_width(amount, '0');
+	(fs.dot && !fs.prec && !n) ? 0 : ft_putnbr_u(n);
 }

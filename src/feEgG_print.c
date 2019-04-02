@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-long double	get_float_number(va_list *ap, f_s fs)
+long double	get_float_number(va_list *ap, t_s fs)
 {
 	if (fs.length == L_LENGTH)
 		return ((long double)va_arg(*ap, long double));
@@ -10,7 +10,7 @@ long double	get_float_number(va_list *ap, f_s fs)
 		return ((float)va_arg(*ap, double));
 }
 
-void		f_print(va_list *ap, f_s fs)
+int		f_print(va_list *ap, t_s fs)
 {
 	long double	f;
 	int			len;
@@ -32,6 +32,7 @@ void		f_print(va_list *ap, f_s fs)
 		ft_put_float(f, fs);
 		fs.minus ? ft_make_width(len, ' ') : 0;
 	}
+	return (len + fs.prec + fs.dot);
 }
 
 static long double handled_number(long double f, int *e_num)
@@ -62,7 +63,7 @@ static long double handled_number(long double f, int *e_num)
 }
 
 
-void		eE_print(va_list *ap, f_s fs)
+int		ee_print(va_list *ap, t_s fs)
 {
 	long double	f;
 	int			len;
@@ -89,9 +90,10 @@ void		eE_print(va_list *ap, f_s fs)
 		ft_put_expo(e_num, fs);
 		fs.minus ? ft_make_width(len, ' ') : 0;
 	}
+	return (len + fs.prec + fs.dot);
 }
 
-void		g_print(va_list *ap, f_s fs)
+int		g_print(va_list *ap, t_s fs)
 {
 	long double	f;
 	int			len;
@@ -119,4 +121,5 @@ void		g_print(va_list *ap, f_s fs)
 		ft_put_expo(e_num, fs);
 		fs.minus ? ft_make_width(len, ' ') : 0;
 	}
+	return (len + fs.prec + fs.dot);
 }

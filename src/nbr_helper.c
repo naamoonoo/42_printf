@@ -1,11 +1,11 @@
 #include "ft_printf.h"
 
-int		is_sign(int is_minus, f_s fs)
+int		is_sign(int is_minus, t_s fs)
 {
 	return (is_minus || fs.plus || fs.space);
 }
 
-void	sign_handler(int is_minus, f_s fs)
+void	sign_handler(int is_minus, t_s fs)
 {
 	if (is_minus)
 		return (ft_putchar('-'));
@@ -15,18 +15,19 @@ void	sign_handler(int is_minus, f_s fs)
 		return (ft_putchar(' '));
 }
 
-void	ft_putnbr_width(int64_t n, int minimum_len, f_s fs)
+void	ft_putnbr_width(int64_t n, int minimum_len, t_s fs)
 {
 	int amount;
-	
+
 	sign_handler(n < 0, fs);
 	n *= n < 0 ? -1 : 1;
-	amount = minimum_len - ft_numlen(n, 10);
-	minimum_len != 0 ? ft_make_width(amount, '0') : 0;
-	ft_putnbr(n);
+	amount = minimum_len - ft_numlen(ABS(n), 10);
+	if (minimum_len != 0)
+		ft_make_width(amount, '0');
+	(fs.dot && !fs.prec && !n) ? 0 : ft_putnbr(n);
 }
 
-void	ft_put_float(long double n, f_s fs)
+void	ft_put_float(long double n, t_s fs)
 {
 	unsigned long long t;
 
@@ -38,7 +39,7 @@ void	ft_put_float(long double n, f_s fs)
 	{
 		n = 10 * n;
 		if (fs.prec == 0)
-			n += (long)(n * 10) % 10 < 5 ? 0 : 1; 
+			n += (long)(n * 10) % 10 < 5 ? 0 : 1;
 		t = (unsigned long long)n;
 		n -= t;
 		t %= 10;
@@ -49,7 +50,7 @@ void	ft_put_float(long double n, f_s fs)
 	}
 }
 
-void	ft_put_expo(int e_num, f_s fs)
+void	ft_put_expo(int e_num, t_s fs)
 {
 	if (e_num == -42424242)
 		return ;

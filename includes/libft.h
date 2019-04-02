@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hnam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: andY <andY@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/13 23:40:14 by hnam              #+#    #+#             */
-/*   Updated: 2019/02/13 23:40:22 by hnam             ###   ########.fr       */
+/*   Created: 2019/03/19 23:24:35 by hnam              #+#    #+#             */
+/*   Updated: 2019/03/31 15:09:59 by andY             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-# include <limits.h> //check https://projects.intra.42.fr/get_next_line/agusev 
-# include <float.h>
+# include <limits.h>
 
-# define BUFF_SIZE 32 
-# define MAX_FD 10000	// if he test success -> git push git/get_next_line_42 and update here too!
+# define BUFF_SIZE 32
+# define MAX_FD 10000
 
 typedef struct		s_list
 {
@@ -92,22 +91,24 @@ int					ft_hidenp(char *s1, char *s2);
 int					ft_strchr_idx(const char *s, int c);
 char				*ft_strtrim_by(char const *s, char condition);
 
-
 /*
 **---------------------number descriptor---------------------
 */
 
-void				ft_putnbr(long n);
+void				ft_putnbr(int64_t n);
+void				ft_putnbr_u(uint64_t n);
 int					ft_atoi(const char *str);
 int					ft_atoi_base(const char *str, int str_base);
-int					ft_numlen(long n, int base);
-int					ft_pow(int base, int times);
+int					ft_numlen(uint64_t n, uint64_t base);
+int64_t				ft_pow(int64_t base, int times);
+uint64_t			ft_pow_u(uint64_t base, int times);
 int					ft_pgcd(int a, int b);
-void				ft_itoa_minus_handling(int *n, char *res, int *len, int *i);
-char				*ft_itoa(int n);
-char				*ft_itoa_base(int n, int str_base, int len);
-
-
+void				itoa_minus_hande(int64_t *n, char *res, int *len, int *i);
+char				*ft_itoa(int64_t n);
+char				*ft_itoa_base(int64_t n, int str_base, int len);
+char				*ft_itoa_base_u(uint64_t n, int str_base, int len);
+int					get_big(int a, int b);
+int					get_small(int a, int b);
 
 /*
 **---------------------checking---------------------

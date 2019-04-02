@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   di_print.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/02 00:26:15 by hnam              #+#    #+#             */
+/*   Updated: 2019/04/02 00:26:27 by hnam             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int64_t	get_number(va_list *ap, f_s fs)
+int64_t		get_number(va_list *ap, t_s fs)
 {
 	if (fs.length == l_LENGTH)
 		return ((long)va_arg(*ap, long));
@@ -14,24 +26,43 @@ int64_t	get_number(va_list *ap, f_s fs)
 		return ((int)va_arg(*ap, int));
 }
 
-void	di_print(va_list *ap, f_s fs)
+static int	ret_val(int64_t n, t_s fs)
 {
-	int64_t nbr;
+	if (fs.prec > fs.width && fs.prec > ft_numlen(ABS(n), 10))
+		return (fs.prec + is_sign(n < 0, fs));
+	else if (fs.width > fs.prec && fs.width > ft_numlen(ABS(n), 10))
+		return (fs.width);
+	else
+	{
+		if (!n && fs.dot && !fs.prec)
+			return (is_sign(n < 0, fs));
+		return (ft_numlen(ABS(n), 10) + is_sign(n < 0, fs));
+	}
+}
+
+int			di_print(va_list *ap, t_s fs)
+{
+	int64_t n;
 	int		len;
 
-	nbr = get_number(ap, fs);
-	len = fs.width - is_sign(nbr < 0, fs);
-	len -= fs.prec > ft_numlen(nbr, 10) ? fs.prec : ft_numlen(nbr, 10);
-	if (fs.minus)
+	n = get_number(ap, fs);
+	len = fs.width - is_sign(n < 0, fs) - ((fs.dot && !fs.prec) ? -1 : 0) -
+	((fs.prec > ft_numlen(ABS(n), 10)) ? fs.prec : ft_numlen(ABS(n), 10));
+	if (fs.zero)
 	{
-		ft_putnbr_width(nbr, fs.prec, fs);
-		ft_make_width(len, ' ');
+		if (!fs.prec)
+			ft_putnbr_width(n, fs.width - is_sign(n < 0, fs), fs);
+		else
+		{
+			ft_make_width(len, ' ');
+			ft_putnbr_width(n, fs.prec, fs);
+		}
 	}
-	else if (!fs.minus && fs.zero)
-		ft_putnbr_width(nbr, fs.width - is_sign(nbr < 0, fs), fs);
-	else if (!fs.minus && !fs.zero)
+	else
 	{
+		fs.minus ? ft_putnbr_width(n, fs.prec, fs) : 0;
 		ft_make_width(len, ' ');
-		ft_putnbr_width(nbr, fs.prec, fs);
+		!fs.minus ? ft_putnbr_width(n, fs.prec, fs) : 0;
 	}
+	return (ret_val(n, fs));
 }
