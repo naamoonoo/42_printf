@@ -20,6 +20,8 @@
 # define OCTAL 8
 # define HEXA 16
 
+# define BIAS 127
+
 // typedef enum {
 // 	c_TYPE = 1 << 0,
 // 	s_TYPE = 1 << 1,
@@ -130,6 +132,12 @@ void		 	ftoa(float f, char *str, uint8_t precision);
 
 void			star_handler(va_list *ap, t_s *fs);
 int				get_res_len(char *s);
+char			*ftob(float n);
+char			*btox(char *b);
+
+char			*normalized_float_number(float n);
+
+
 
 #endif
 

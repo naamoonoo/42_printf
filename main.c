@@ -212,13 +212,44 @@ printf("---------x----------\n");
 	ft_printf("%p\n", NULL);
 
 	ft_printf("now is %k");
-	// leaks test!!!
+
+
+	printf("%d\t", printf("hello\n"));
+	printf("%d\t", ft_printf("{red}hello{eoc}\n"));
+	printf("%d\t", printf("{redhello{eoc}\n"));
+	printf("%d\t", ft_printf("{redhello{eoc}\n"));
+
+
+	printf("\n----------------------------\n");
+	printf("%s\n", btox(ftob(15.625)));
+	printf("%s\n", btox(ftob(-118.625)));
+	printf("%s\n", ftob(83.1235923023));
+	printf("%s\n", ftob(11.123592360349));
+
+
+
+
+
+
+
+
+		// leaks test!!!
 	// while(1)
 	// 	sleep(1);
 	// leaks test!!!
-
-
-
 	return (0);
 }
 
+// 11110110.101     6       10000101
+// res : 110000101
+// res : 110000101110110.101
+		//  110000101110110101
+// (null)
+// 01010011.00011111101000111       6       10000101
+// res : 010000101
+// res : 010000101010011.00011111101000111
+// (null)
+// 01011.000111111010001111         3       10000010
+// res : 010000010
+// res : 010000010011.000111111010001111
+// (null)
