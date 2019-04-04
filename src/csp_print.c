@@ -6,7 +6,7 @@
 /*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 00:24:41 by hnam              #+#    #+#             */
-/*   Updated: 2019/04/02 00:45:26 by hnam             ###   ########.fr       */
+/*   Updated: 2019/04/04 01:32:19 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	s_print(va_list *ap, t_s fs)
 	fs.minus ? ft_make_width(len, ' ') : 0;
 	(fs.dot && fs.prec && ((int)ft_strlen(s) > fs.prec)) ? ft_strdel(&s) : 0;
 	len = get_big(fs.width, (int)ft_strlen(s));
-	// ft_strdel(&s); 해결 어떻게 할꺼야??
 	return (len);
 }
 
@@ -96,16 +95,4 @@ int	pct_print(t_s fs)
 		ft_putchar('%');
 	}
 	return (len > 0 ? len + 1 : 1);
-}
-
-int	time_print(t_s fs)
-{
-	time_t now;
-
-	now = time(NULL);
-	if (now == 1)
-		return (ERROR);
-	printf("time is %ld\n", now);
-	fs.width += 1;
-	return 0;
 }

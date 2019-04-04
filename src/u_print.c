@@ -6,7 +6,7 @@
 /*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 00:26:55 by hnam              #+#    #+#             */
-/*   Updated: 2019/04/02 00:26:55 by hnam             ###   ########.fr       */
+/*   Updated: 2019/04/04 01:20:59 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			u_print(va_list *ap, t_s fs)
 	return (ret_val(n, fs));
 }
 
-void		ft_putnbr_width_u(int64_t n, int minimum_len, t_s fs)
+void		ft_putnbr_width_u(uint64_t n, int minimum_len, t_s fs)
 {
 	int amount;
 

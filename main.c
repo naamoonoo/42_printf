@@ -16,7 +16,8 @@ static unsigned long		ul_pos_1 = 22337203685477;
 static unsigned long long	ull_pos_1 = 22337203685477;
 static unsigned long long  ullmax = 9223372036854775807;
 static unsigned long  		ulmax = 9223372036854775807;
-int	main()
+
+int	main(int ac, char *av[])
 {
 	printf("|%*c|\n", 3, 'a');
 	ft_printf("|%*c|\n", 3, 'a');
@@ -221,16 +222,72 @@ printf("---------x----------\n");
 
 
 	printf("\n----------------------------\n");
-	printf("%s\n", btox(ftob(15.625)));
-	printf("%s\n", btox(ftob(-118.625)));
-	printf("%s\n", ftob(83.1235923023));
-	printf("%s\n", ftob(11.123592360349));
+	printf("%s\n", btox(ftob(15.625, 32, FLOAT_BIAS)));
+	printf("%s\n", btox(ftob(-118.625, 32, FLOAT_BIAS)));
+	printf("%s\n", ftob(0.625, FLOAT_LEN, FLOAT_BIAS));
+	printf("%s\n", ftob(0.625, DOUBLE_LEN, DOUBLE_BIAS));
+	printf("%s\n", ftob(0.625, LONG_DOUBLE_LEN, LONG_DOUBLE_BIAS));
+	printf("%s\n", ftob(-118.625, FLOAT_LEN, FLOAT_BIAS));
+	printf("%s\n", ftob(-118.625, DOUBLE_LEN, DOUBLE_BIAS));
+	printf("%s\n", ftob(-118.625, LONG_DOUBLE_LEN, LONG_DOUBLE_BIAS));
+	printf("%s\n", ftob(83.1235923023, FLOAT_LEN, FLOAT_BIAS));
+	printf("%s\n", ftob(83.1235923023, DOUBLE_LEN, DOUBLE_BIAS));
+	printf("%s\n", ftob(83.1235923023, LONG_DOUBLE_LEN, LONG_DOUBLE_BIAS));
+	printf("%s\n", ftob(11.123592360349, FLOAT_LEN, FLOAT_BIAS));
+	printf("%s\n", ftob(11.123592360349, DOUBLE_LEN, DOUBLE_BIAS));
+	printf("%s\n", ftob(11.123592360349, LONG_DOUBLE_LEN, LONG_DOUBLE_BIAS));
+
+
+	printf("%f\n", 15.6259753);
+	printf("%lf\n", 15.6259753);
+	// printf("%Lf\n", 15.6259753);
+	printf("%0f\n", 15.6259753);
+	printf("%0f\n", 15.625);
+	printf("%-f\n", 15.6259753);
+	printf("%+f\n", 15.6259753);
+	printf("% f\n", 15.6259753);
+	printf("%#f\n", 15.6259753);
+	printf("%1f\n", 15.6259753);
+	printf("%10f\n", 15.6259753);
+	printf("%20f\n", 15.6259753);
+	printf("%.f\n", 15.6259753);
+	printf("%#.0f\n", 15.6259753);
+	printf("%.9f\n", 15.6259753);
+	printf("%1.f\n", 15.6259753);
+	printf("%1.0f\n", 15.6259753);
+	printf("%1.9f\n", 15.6259753);
+	printf("%10.f\n", 15.6259753);
+	printf("%10.0f\n", 15.6259753);
+	printf("%10.9f\n", 15.6259753);
+	printf("%20.f\n", 15.6259753);
+	printf("%20.0f\n", 15.6259753);
+	printf("%20.9f\n", 15.6259753);
+	// printf("%s\n", ftob(11.123592360349, 64, BIAS));
 
 
 
+	printf("%f\n", 16.252);
+	ft_printf("%f\n", 16.252);
+	printf("%f\n", 16.252156);
+	ft_printf("%f\n", 16.252156);
+	ft_printf("%.f\n", 16.252156);
+	ft_printf("%#.f\n", 16.252156);
+	ft_printf("%.0f\n", 16.252156);
+	ft_printf("%#.0f\n", 16.252156);
+	printf("%f\n", 16.252156639);
+	ft_printf("%f\n", 16.252156639);
+	printf("%f\n", -16.252156639);
+	ft_printf("%f\n", -16.252156639);
 
+	printf("%a\n", 109.2352623);
+	ft_printf("%a\n", 109.2352623);
 
-
+	printf("%a\n", 32.0);
+	ft_printf("%a\n", 32.0);
+	printf("%s\t %a\n", ftob(32.0, FLOAT_LEN, FLOAT_BIAS), 32.0);
+	printf("%a\n", 0.25);
+	printf("%a\n", 1.2);
+	printf("%s\n", ftob(0.857421875, FLOAT_LEN, FLOAT_BIAS));
 
 
 		// leaks test!!!
@@ -253,3 +310,20 @@ printf("---------x----------\n");
 // res : 010000010
 // res : 010000010011.000111111010001111
 // (null)
+
+//put float
+// printf("num len : %d\t %d\t", ft_numlen((int)n,10),(int)n);
+	// printf("fs.prec %d\t fs.dot %d\n", fs.prec, fs.dot);
+
+//f
+		// printf("origin prec :%d\n", fs.prec);
+
+	// printf("changed prec :%d\n", fs.prec);
+
+	// printf("changed dot :%d\n", fs.dot);
+
+
+//e
+	// printf("fs.widht %d\tnum len : %d\t %d\t", fs.width, ft_numlen(ABS((int)f), 10), is_sign(f < 0, fs));
+	// printf("e_num : %d\tfs.prec %d\t fs.dot %d\n|", (e_num < 0 ? 1 : 0), fs.prec, fs.dot);
+		// printf("w_case : %d\n", fs.width - len);

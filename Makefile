@@ -4,7 +4,7 @@ SRC=$(wildcard src/*.c)
 LRC=$(wildcard lib/libft/*.c)
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror -Iincludes
-OBJ = $(patsubst %.c, %.o, $(SRC))
+OBJ = $(patsubst src/%.c, obj/%.o, $(SRC))
 LOBJ = $(patsubst %.c, %.o, $(LRC))
 
 all: $(NAME)
@@ -21,12 +21,11 @@ obj/%.o: src/%.c
 
 clean:
 	-cd lib/libft && make clean
-	# -cd src && make clean
 
 fclean: clean
 	-cd lib/libft && make fclean
-	# -cd src && make clean
 	-rm -f $(NAME)
+	-rm -rf obj
 	-rm -f libft.a
 
 re: fclean $(NAME)

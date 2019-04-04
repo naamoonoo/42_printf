@@ -6,7 +6,7 @@
 /*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 19:19:31 by hnam              #+#    #+#             */
-/*   Updated: 2019/04/01 23:30:50 by hnam             ###   ########.fr       */
+/*   Updated: 2019/04/03 21:35:49 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,10 @@ int			b_print(va_list *ap, t_s fs)
 	if (d == 0 && fs.dot && fs.prec == 0)
 		temp = "";
 	else
-		temp = ft_itoa_base_u(d, HEXA, get_big(fs.prec, ft_numlen(d, HEXA)));
+		temp = ft_itoa_base_u(d, BINARY,
+			get_big(fs.prec, ft_numlen(d, BINARY)));
 	fs.hash = (fs.hash && d != 0) ? 2 : 0;
-	len = ret_val(d, fs, HEXA);
+	len = ret_val(d, fs, BINARY);
 	hash = "0b";
 	if (len == fs.width)
 		oxb_print_helper(fs, temp, hash);

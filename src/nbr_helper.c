@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   nbr_helper.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/04 01:33:07 by hnam              #+#    #+#             */
+/*   Updated: 2019/04/04 01:33:08 by hnam             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int		is_sign(int is_minus, t_s fs)
@@ -29,23 +41,24 @@ void	ft_putnbr_width(int64_t n, int minimum_len, t_s fs)
 
 void	ft_put_float(long double n, t_s fs)
 {
-	unsigned long long t;
+	int t;
 
-	n *= n < 0 ? -1 : 1;
-	if ((fs.dot && fs.prec) || (!fs.dot && !fs.prec) || fs.hash)
+	!(!fs.minus && fs.zero) ? sign_handler(n < 0, fs) : 0;
+	n = ABS(n);
+	n += (fs.prec <= 15) ? 0.0000000000000001 : 0;
+	if (fs.prec == 0)
+		n += (((int)(n * 10) % 10) < 5) ? 0 : 1;
+	ft_putnbr((int)n);
+	if (fs.dot)
 		ft_putchar('.');
-	fs.prec += !fs.prec && !fs.dot ? 6 : 0;
 	while (fs.prec-- > 0)
 	{
 		n = 10 * n;
 		if (fs.prec == 0)
-			n += (long)(n * 10) % 10 < 5 ? 0 : 1;
-		t = (unsigned long long)n;
+			n += (int)(n * 10) % 10 < 5 ? 0 : 1;
+		t = (int)n;
 		n -= t;
 		t %= 10;
-		// if (fs.is_g && !fs.hash && (int)t == 0)
-		// 	break ;
-		// for g trancnate '0'!!!!
 		ft_putchar(t + '0');
 	}
 }

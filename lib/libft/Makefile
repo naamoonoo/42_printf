@@ -14,6 +14,12 @@ $(NAME): $(OBJ)
 $(OBJ): $(CFILES)
 	$(CC) $(CFLAGS) $(CFILES)
 
+obj:
+	mkdir obj
+
+obj/%.o: src/%.c
+	gcc $(CFLAGS) $(OPTION) -c -o $@ $<
+
 clean:
 	rm -rf $(OBJ)
 

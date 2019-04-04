@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_base_u.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/04 01:23:02 by hnam              #+#    #+#             */
+/*   Updated: 2019/04/04 01:23:12 by hnam             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -32,7 +43,7 @@ char			*ft_itoa_base_u(uint64_t n, int str_base, int len)
 		return (NULL);
 	base_set = make_base_set(base_set, str_base);
 	if (len > num_len)
-		while(i < len - num_len)
+		while (i < len - num_len)
 			res[i++] = '0';
 	while (num_len-- > 0)
 	{

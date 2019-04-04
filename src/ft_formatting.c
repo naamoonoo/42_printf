@@ -6,7 +6,7 @@
 /*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 00:25:08 by hnam              #+#    #+#             */
-/*   Updated: 2019/04/02 00:43:18 by hnam             ###   ########.fr       */
+/*   Updated: 2019/04/04 00:30:40 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ t_dt	g_dt[] =
 	{'X', x_print},
 	{'f', f_print},
 	{'b', b_print},
-	{'e', ee_print},
-	{'E', ee_print},
+	{'e', e_print},
+	{'E', e_print},
 	{'g', g_print},
 	{'G', g_print},
 	{'%', pct_print},
 	{'k', time_print},
+	{'a', a_print},
+	{'A', a_print},
+	{'B', ieee754_print},
 	{0, NULL}
 };
 
@@ -122,8 +125,6 @@ int		get_format(char **s, int *flag, t_s *fs)
 
 	*s += 1;
 	i = -1;
-	// if (**s == '%')
-	// 	ft_putchar('%');
 	if (ft_strchr(FLAG_SPECIFIER, **s))
 	{
 		get_flag(**s, fs);
@@ -138,7 +139,7 @@ int		get_format(char **s, int *flag, t_s *fs)
 		while (++i < (int)KIND_OF_SPECIFIER)
 			if (g_dt[i].specifier == **s)
 			{
-				fs->is_upper = ft_strchr("XEG", **s) ? 1 : 0;
+				fs->is_upper = ft_strchr("XEGA", **s) ? 1 : 0;
 				fs->is_g = ft_strchr("gG", **s) ? 1 : 0;
 				return (i);
 			}

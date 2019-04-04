@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-int	main()
+int	main(int ac, char *av[])
 {
 	printf("hell0\n");
 	ft_printf("holl0\n");
@@ -192,59 +192,74 @@ int	main()
 	ft_printf( "%#X\n", 26);//	0X1A
 	ft_printf("\n");
 	printf("------------\n");
-//   printf("%#08x\n", 42);
-//   ft_printf("%#08x\n", 42);
-//   printf("%#-08x\n", 42);
-//   ft_printf("%#-08x\n", 42);
-//   printf("@moulitest: %#.x %#.0x\n", 0, 0);
-//   ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
-//   printf("@moulitest: %.x %.0x\n", 0, 0);
-//   ft_printf("@moulitest: %.x %.0x\n", 0, 0);
-//   printf("@moulitest: %5.x %5.0x\n", 0, 0);
-//   ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
-//   printf("%.2s is a string\n", "this");
-//   ft_printf("%.2s is a string\n", "this");
-//   printf("%5.2s is a string\n", "this");
-//   ft_printf("%5.2s is a string\n", "this");
-//   printf("%-.2s is a string\n", "this");
-//   ft_printf("%-.2s is a string\n", "this");
-//   printf("%-5.2s is a string\n", "this");
-//   ft_printf("%-5.2s is a string\n", "this");
+  printf("%#08x\n", 42);
+  ft_printf("%#08x\n", 42);
+  printf("%#-08x\n", 42);
+  ft_printf("%#-08x\n", 42);
+  printf("@moulitest: %#.x %#.0x\n", 0, 0);
+  ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
+  printf("@moulitest: %.x %.0x\n", 0, 0);
+  ft_printf("@moulitest: %.x %.0x\n", 0, 0);
+  printf("@moulitest: %5.x %5.0x\n", 0, 0);
+  ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
+  printf("%.2s is a string\n", "this");
+  ft_printf("%.2s is a string\n", "this");
+  printf("%5.2s is a string\n", "this");
+  ft_printf("%5.2s is a string\n", "this");
+  printf("%-.2s is a string\n", "this");
+  ft_printf("%-.2s is a string\n", "this");
+  printf("%-5.2s is a string\n", "this");
+  ft_printf("%-5.2s is a string\n", "this");
 
-//   printf("%-05o\n", 2500);
-//   ft_printf("%-05o\n", 2500);
-//   printf("@moulitest: %.o %.0o\n", 0, 0);
-//   ft_printf("@moulitest: %.o %.0o\n", 0, 0);
-//   printf("@moulitest: %5.o %5.0o\n", 0, 0);
-//   ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
-//   printf("% +d\n", 42);
-//   ft_printf("% +d\n", 42);
-//   printf("%+ d\n", 42);
-//   ft_printf("%+ d\n", 42);
-//   printf("%  +d\n", 42);
-//   ft_printf("%  +d\n", 42);
-//   printf("%+  d\n", 42);
-//   ft_printf("%+  d\n", 42);
-//   printf("% ++d\n", 42);
-//   ft_printf("% ++d\n", 42);
-//   printf("%++ d\n", 42);
-//   ft_printf("%++ d\n", 42);
-//   printf("%-05d\n", 42);
-//   ft_printf("%-05d\n", 42);
-//   printf("%-05d\n", -42);
-//   ft_printf("%-05d\n", -42);
-//   printf("@moulitest: %.d %.0d\n", 0, 0);
-//   ft_printf("@moulitest: %.d %.0d\n", 0, 0);
-//   printf("@moulitest: %5.d %5.0d\n", 0, 0);
-//   ft_printf("@moulitest: %5.d %5.0d\n", 0, 0);
-//   printf("% u\n", 4294967295);
-//   ft_printf("% u\n", 4294967295);
+	printf("hello, %s.\n", NULL);
+	ft_printf("hello, %s.\n", NULL);
 
-	// ft_putnbr(LONG_MAX/ 10);
-	// printf("%d\n",ft_numlen(LONG_MAX, 10));
-	// printf("%45.32f\n", 254.12352362362723);
-	// ft_printf("%45.32f\n", 254.12352362362723);
-	// ft_printf("\n");
+	printf("|this %i number|\n", 17);
+	ft_printf("|this %i number|\n", 17);
+	printf("this %i number\n", -267);
+	ft_printf("this %i number\n", -267);
+	printf("this %i number\n", 0);
+	ft_printf("this %i number\n", 0);
+	printf("%i\n", 3);
+	ft_printf("%i\n", 3);
+	printf("%i\n", -1);
+	ft_printf("%i\n", -1);
+	printf("%i\n", 0);
+	ft_printf("%i\n", 0);
+
+  printf("%-05o\n", 2500);
+  ft_printf("%-05o\n", 2500);
+  printf("@moulitest: %.o %.0o\n", 0, 0);
+  ft_printf("@moulitest: %.o %.0o\n", 0, 0);
+  printf("@moulitest: %5.o %5.0o\n", 0, 0);
+  ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
+  printf("% +d\n", 42);
+  ft_printf("% +d\n", 42);
+  printf("%+ d\n", 42);
+  ft_printf("%+ d\n", 42);
+  printf("%  +d\n", 42);
+  ft_printf("%  +d\n", 42);
+  printf("%+  d\n", 42);
+  ft_printf("%+  d\n", 42);
+  printf("% ++d\n", 42);
+  ft_printf("% ++d\n", 42);
+  printf("%++ d\n", 42);
+  ft_printf("%++ d\n", 42);
+  printf("%-05d\n", 42);
+  ft_printf("%-05d\n", 42);
+  printf("%-05d\n", -42);
+  ft_printf("%-05d\n", -42);
+  printf("@moulitest: %.d %.0d\n", 0, 0);
+  ft_printf("@moulitest: %.d %.0d\n", 0, 0);
+  printf("@moulitest: %5.d %5.0d\n", 0, 0);
+  ft_printf("@moulitest: %5.d %5.0d\n", 0, 0);
+  printf("% u\n", 4294967295);
+  ft_printf("% u\n", 4294967295);
+
+	printf("%d\n",ft_numlen(LONG_MAX, 10));
+	printf("%45.32f\n", 254.12352362362723);
+	ft_printf("%45.32f\n", 254.12352362362723);
+	ft_printf("\n");
 
 
 	printf("|%21.12f|\n", 112.324);
@@ -299,45 +314,23 @@ int	main()
 	printf("|%#30f|\n", 0.0);
 	ft_printf("|%#30f|\n\n", 0.0);
 
-
-
-
-	// printf("%s\n", ft_itoa_base(flag, 2, 16));
-	// long a = 300, b = (long) 1.0E+14;
-	// ft_printf( "%li\n%i", a, b );
-
-
-
-	// ft_printf( "%lc:%ls", L'A', L"ABC" );
-	// long double c = 123.23523516236235;
-	// ft_putnbr((long)c);
-	// c -= (long)c;
-	// decimal_len(3.215235);
-
-
-	// printf("%10o\n", 392);
-	// printf("%10o\n", 392);
-	// printf("%o\n", -2);
-	// u_int64_t qwer = -3;
-	// long int abd = -312351325;
-
-	// printf("%o\n", -312351325);
-	// ft_printf("%o\n", -312351325);
-	// printf("%lo\n", abd);
-
-	// printf("%-15o\n", -392);
-	// printf("%015o\n", -392);
-	// printf("hellon%s\n", ft_itoa_base(-392, 8, 10));
 	printf("|%f|\n", 0.7);
 	ft_printf("|%f|\n\n", 0.7);
 	printf("|%.0f|\n", 0.7);
 	ft_printf("|%.0f|\n\n", 0.7);
+
+	printf("\n\n-----------bouns------------\n\n");
+
 	printf("|%e|\n", -0.001342);
 	ft_printf("|%e|\n\n", -0.001342);
-	printf("|%e|\n", -98.1342);
-	ft_printf("|%e|\n", -98.1342);
+	printf("|%e|\n", 98.1342);
+	ft_printf("|%e|\n", 98.1342);
 	printf("|%.3e|\n", 1226.82425);
 	ft_printf("|%.3e|\n", 1226.82425);
+	printf("|%e|\n", 3.86362376);
+	ft_printf("|%e|\n\n", 3.86362376);
+	printf("|%.e|\n", 3.86362376);
+	ft_printf("|%.e|\n\n", 3.86362376);
 	printf("|%.0e|\n", 3.86362376);
 	ft_printf("|%.0e|\n\n", 3.86362376);
 	printf("|%e|\n", 3.26362376);
@@ -352,8 +345,6 @@ int	main()
 	ft_printf("|%12.10e|\n\n", -0.0000532);
 	printf("|%13e|\n", -0.1);
 	ft_printf("|%13e|\n\n", -0.1);
-	printf("|%14e|\n", -0.1);
-	ft_printf("|%14e|\n\n", -0.1);
 	printf("|%12.10E|\n", -0.1);
 	ft_printf("|%12.10E|\n\n", -0.1);
 	printf("|%13E|\n", -0.1);
@@ -365,16 +356,6 @@ int	main()
 	printf("|%16E|\n", 0.1);
 	ft_printf("|%16E|\n\n", 0.1);
 
-
-
-
-	printf("|%#.16f|\n", 3122.55);
-	ft_printf("|%#.16f|\n", 3122.55);
-	printf("|%#.16E|\n", 3122.55);
-	ft_printf("|%#.16E|\n", 3122.55);
-	printf("|%3.16G|\n", 3122.55);
-	ft_printf("|%#.16G|\n", 3122.55);
-
 	printf("|%#3.3f|\n", -12.17347);
 	ft_printf("|%#3.3f|\n", -12.17347);
 	printf("|%#3.3E|\n", -12.17347);
@@ -383,25 +364,30 @@ int	main()
 	ft_printf("|%3.3G|\n", -12.17347);
 
 	ft_printf("-------------------\n");
-	printf("|%G|\n", 173.47);
-	ft_printf("|%G|\n", 173.47);
-	printf("|%G|\n", 17.347);
-	ft_printf("|%G|\n", 17.347);
-	printf("|%G|\n", 1.7347);
-	ft_printf("|%G|\n", 1.7347);
-	printf("|%G|\n", 0.17347);
-	ft_printf("|%G|\n", 0.17347);
-	printf("|%G|\n", 0.017347);
-	ft_printf("|%G|\n", 0.017347);
-	printf("|%G|\n", 0.0017347);
-	ft_printf("|%G|\n", 0.0017347);
-	printf("|%G|\n", 0.00017347);
-	ft_printf("|%G|\n", 0.00017347);
-	printf("|%G|\n", 0.000017347);
+	printf("%G\n", 173.47);
+	ft_printf("%G\n", 173.47);
+	printf("%G\n", 17.347);
+	ft_printf("%G\n", 17.347);
+	printf("%G\n", 1.7347);
+	ft_printf("%G\n", 1.7347);
+	printf("%G\n", 0.17347);
+	ft_printf("%G\n", 0.17347);
+	printf("%G\n", 0.017347);
+	ft_printf("%G\n", 0.017347);
+	printf("%G\n", 0.0017347);
+	ft_printf("%G\n", 0.0017347);
+	printf("%G\n", 0.00017347);
+	ft_printf("%G\n", 0.00017347);
+	printf("%G\n", 0.000017347);
+	ft_printf("%G\n", 0.000017347);
+
+	ft_printf("-------------------\n");
 	ft_printf("|%G|\n", 0.000017347);
 	ft_printf("|%f|\n", 0.000017347);
-	ft_printf("|%e|\n", 0.000017347);
-	ft_printf("-------------------\n");
+	ft_printf("|%E|\n", 0.000017347);
+	printf("\n----------------------------\n");
+
+
 
 	printf("\033[0;31m"); //Set the text to the color red
 	printf("Hello\n"); //Display Hello in red
@@ -424,25 +410,39 @@ int	main()
 	ft_printf("binary |%.5b|\n", 16233);
 	ft_printf("binary |%#b|\n", 215);
 
-	printf("..%s stuff %s\n", "a", "b");
-	ft_printf("..%s stuff %s\n", "a", "b");
-	printf("hello, %s.\n", NULL);
-	ft_printf("hello, %s.\n", NULL);
-	// printf(($"Color "g", number1 "6d,", number2 "4zd,", hex "16r2d,", float "-d.2d,", unsigned value"-3d"."l$,
-    //      "red", 123456, 89, BIN 255, 3.14, 250));
-	// printf("%2$d %2$#x; %1$d %1$#x",16,17);
+	printf("..%*s stuff %*s\n", 10, "a", 5, "b");
+	ft_printf("..%*s stuff %*s\n", 10, "a", 5, "b");
 
-	printf("|this %i number|\n", 17);
-	ft_printf("|this %i number|\n", 17);
-	printf("this %i number\n", -267);
-	ft_printf("this %i number\n", -267);
-	printf("this %i number\n", 0);
-	ft_printf("this %i number\n", 0);
-	printf("%i\n", 3);
-	ft_printf("%i\n", 3);
-	printf("%i\n", -1);
-	ft_printf("%i\n", -1);
-	printf("%i\n", 0);
-	ft_printf("%i\n", 0);
+	ft_printf("%B\n", 15.625);
+	ft_printf("%lB\n", 15.625);
+	ft_printf("%LB\n", 15.625);
+	ft_printf("%B\n",-118.625);
+	ft_printf("%lB\n",-118.625);
+	ft_printf("%LB\n",-118.625);
+	ft_printf("%B\n",83.1235923023);
+	ft_printf("%lB\n",83.1235923023);
+	ft_printf("%LB\n",83.1235923023);
+	ft_printf("%B\n",11.123592360349);
+	ft_printf("%lB\n",11.123592360349);
+	ft_printf("%LB\n",11.123592360349);
+
+
+	printf("%a\n", 109.2352623);
+	ft_printf("%a\n", 109.2352623);
+
+	printf("%a\n", 32.0);
+	ft_printf("%a\n", 32.0);
+	printf("%A\n", 32.0);
+	ft_printf("%A\n", 32.0);
+
+	int fd;
+
+	fd = open(av[1], O_RDONLY);
+	ft_printf_fd(fd, "andy", 27);
+
+	ft_printf("%k\n", "CT");
+	ft_printf("%k\n", "C");
+	ft_printf("%k\n", " T");
+
 	return (0);
 }
