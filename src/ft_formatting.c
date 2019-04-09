@@ -6,7 +6,7 @@
 /*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 00:25:08 by hnam              #+#    #+#             */
-/*   Updated: 2019/04/04 00:30:40 by hnam             ###   ########.fr       */
+/*   Updated: 2019/04/08 16:39:15 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ t_dt	g_dt[] =
 	{'g', g_print},
 	{'G', g_print},
 	{'%', pct_print},
-	{'k', time_print},
 	{'a', a_print},
 	{'A', a_print},
 	{'B', ieee754_print},
+	{'n', length_print},
 	{0, NULL}
 };
 
@@ -63,7 +63,6 @@ void	flag_setting(t_s *fs)
 	fs->zero = 0;
 	fs->width = 0;
 	fs->dot = 0;
-	fs->apo = 0;
 	fs->prec = 0;
 	fs->length = 0;
 	fs->w_star = 0;

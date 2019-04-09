@@ -1,18 +1,17 @@
-CFLAGS = -c -Wall -Wextra -Wall -I../../includes
-CC = gcc
-NAME = libft.a
+NAME	=	libft.a
+HEADER	=	../../includes
+OPTION	=	-c -I $(HEADER)
+CFLAGS	=	-Wall -Wextra -Werror
+CFILES	=	$(wildcard src/*.c)
+OBJ		=	$(patsubst src/%.c, obj/%.o, $(CFILES))
 
-CFILES = $(wildcard *.c)
-OBJ = $(patsubst %.c, %.o, $(CFILES))
+all: $(NAME)
 
-all:	$(NAME)
+pre: obj $(OBJ)
 
-$(NAME): $(OBJ)
+$(NAME): obj $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-
-$(OBJ): $(CFILES)
-	$(CC) $(CFLAGS) $(CFILES)
 
 obj:
 	mkdir obj
@@ -21,11 +20,11 @@ obj/%.o: src/%.c
 	gcc $(CFLAGS) $(OPTION) -c -o $@ $<
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf obj
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
-re: fclean all
+re: clean all
 
-.PHONY: clean fclean re
+.PHONY: all re clean fclean

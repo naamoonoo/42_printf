@@ -6,7 +6,7 @@
 /*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 01:17:47 by hnam              #+#    #+#             */
-/*   Updated: 2019/04/04 01:28:09 by hnam             ###   ########.fr       */
+/*   Updated: 2019/04/08 16:39:33 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <stdint.h>
-# include <time.h>
 
 # define ERROR -42
 
 # define FLAG_SPECIFIER "-+ 0#.123456789$*"
 # define LENGTH_SPECIFIER "hlL"
-# define SPECIFIER "cspdiouxXfbeEgGaABk%"
+# define SPECIFIER "cspdiouxXfbeEgGaABn%"
 # define KIND_OF_SPECIFIER (ft_strlen(SPECIFIER))
 
 # define BINARY 2
@@ -44,8 +43,6 @@ enum			e_length
 	l_LENGTH = 1 << 2,
 	ll_LENGTH = 1 << 3,
 	L_LENGTH = 1 << 4,
-	j_LENGTH = 1 << 5,
-	z_LENGTH = 1 << 6,
 };
 
 typedef struct	s_dispatch_table
@@ -65,7 +62,6 @@ typedef struct	s_flag_specifier
 	int			w_star;
 	int			p_star;
 	int			dot;
-	int			apo;
 	int			prec;
 	int			length;
 	int			is_upper;
@@ -115,9 +111,9 @@ char			*normalized_float_number(long double n, int size);
 int				a_print(va_list *ap, t_s fs);
 char			*btox(char *b);
 
-int				time_print(va_list *ap, t_s fs);
-
 void			ft_coloring(char **s, int *res);
+
+int				length_print(va_list *ap);
 
 int				is_sign(int is_minus, t_s fs);
 void			sign_handler(int is_minus, t_s fs);

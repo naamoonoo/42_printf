@@ -1,15 +1,17 @@
 NAME=libftprintf.a
 
 SRC=$(wildcard src/*.c)
-LRC=$(wildcard lib/libft/*.c)
+LIBFT=lib/libft
+LRC=$(wildcard $(LIBFT)/src/*.c)
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror -Iincludes
 OBJ = $(patsubst src/%.c, obj/%.o, $(SRC))
-LOBJ = $(patsubst %.c, %.o, $(LRC))
+LOBJ = $(patsubst $(LIBFT)/src/%.c, $(LIBFT)/obj/%.o, $(LRC))
 
 all: $(NAME)
 
-$(NAME): obj $(OBJ) $(LOBJ)
+$(NAME): obj $(OBJ)
+	cd lib/libft && make pre
 	ar rc $(NAME) $(OBJ) $(LOBJ)
 	ranlib $(NAME)
 
@@ -21,11 +23,12 @@ obj/%.o: src/%.c
 
 clean:
 	-cd lib/libft && make clean
+	-rm -rf obj
 
 fclean: clean
 	-cd lib/libft && make fclean
-	-rm -f $(NAME)
 	-rm -rf obj
+	-rm -f $(NAME)
 	-rm -f libft.a
 
 re: fclean $(NAME)

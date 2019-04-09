@@ -6,7 +6,7 @@
 /*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 00:24:41 by hnam              #+#    #+#             */
-/*   Updated: 2019/04/04 01:32:19 by hnam             ###   ########.fr       */
+/*   Updated: 2019/04/08 16:39:24 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,8 @@ int	p_print(va_list *ap, t_s fs)
 int	pct_print(t_s fs)
 {
 	int		len;
-	char	*res;
 
 	len = fs.width - 1;
-	res = ft_memalloc(len + 1);
 	if (fs.minus)
 	{
 		ft_putchar('%');
@@ -95,4 +93,15 @@ int	pct_print(t_s fs)
 		ft_putchar('%');
 	}
 	return (len > 0 ? len + 1 : 1);
+}
+
+int	length_print(va_list *ap)
+{
+	char	*s;
+
+	s = va_arg(*ap, char *);
+	if (s == NULL)
+		return (0);
+	ft_putnbr_u((uint64_t)ft_strlen(s));
+	return ((uint64_t)ft_strlen(s));
 }

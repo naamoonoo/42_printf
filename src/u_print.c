@@ -6,7 +6,7 @@
 /*   By: hnam <hnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 00:26:55 by hnam              #+#    #+#             */
-/*   Updated: 2019/04/04 01:20:59 by hnam             ###   ########.fr       */
+/*   Updated: 2019/04/04 11:24:56 by hnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ void		ft_putnbr_width_u(uint64_t n, int minimum_len, t_s fs)
 {
 	int amount;
 
-	sign_handler(n < 0, fs);
+	if (fs.plus)
+		ft_putchar('+');
+	else if (fs.space)
+		ft_putchar(' ');
 	amount = minimum_len - ft_numlen(ABS(n), 10);
 	if (minimum_len != 0)
 		ft_make_width(amount, '0');
