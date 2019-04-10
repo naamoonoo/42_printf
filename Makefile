@@ -26,8 +26,6 @@ clean:
 	-rm -rf obj
 
 fclean: clean
-	-cd lib/libft && make fclean
-	-rm -rf obj
 	-rm -f $(NAME)
 	-rm -f libft.a
 
